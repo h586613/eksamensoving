@@ -1,4 +1,4 @@
-package eksamensoving;
+//package eksamensoving;
 
 
 import java.util.Arrays;
@@ -7,25 +7,36 @@ import java.util.List;
 public class Eksamen {
 
 	public static void main (String[] args) {
+		
+		//test comment
 	
 	String s = "Java";
 	List<String> spraakliste = Arrays.asList("Java", "C#", "Rust");
 	
 //	b)
+//	i
 	Stringfunksjon storebokstaver = String::toUpperCase; //metodereferanse
+	skrivUtFormatert(s,storebokstaver); 
+		//("hva skal endres", og "hvordan det skal endres")
+	
+//	ii
 	Stringfunksjon innrammet = (s1) -> "["+s1+"]";
+	skrivUtFormatert(s,innrammet);
+	
+//	iii
 	Stringfunksjon mellomrom = (s1) -> s1.replaceAll(".(?!$)", "$0 ");
+	skrivUtFormatert(s,mellomrom);
 	
 										
 												
-	skrivUtFormatert(s,storebokstaver); //får feil som sier at p2 er string også(?)..? er det fordi den returnerer string?
-	skrivUtFormatert(s,innrammet);
-	skrivUtFormatert(s,mellomrom);
-	//"hva skal endres", og "hvordan det skal endres"
+	
+	
+	
+	
 
 	
 //	c)
-	skrivUtFormatert(s,kombiner(mellomrom, innrammet)); //kan kjøre mellomromm på innrammet
+	skrivUtFormatert(s,kombiner(storebokstaver, innrammet)); //kan kjøre mellomromm på innrammet
 														//	og da vil jo rammene også være med i ordet
 														//	så de vil også få mellomrom
 	
@@ -40,6 +51,9 @@ public class Eksamen {
 	for(String str:spraakliste) {
 	skrivUtFormatert(str, innrammet);
 	}
+	
+//	ii hvis man får lov å bruke streams:
+	spraakliste.forEach(str2 -> skrivUtFormatert(str2, innrammet));
 
 	
 	}
@@ -57,7 +71,7 @@ public class Eksamen {
 		
 	
 	
-	
+//	c)
 	private static Stringfunksjon kombiner(Stringfunksjon sf1, Stringfunksjon sf2) {
 		return (s) -> sf2.anvend(sf1.anvend(s));
 	}
@@ -66,16 +80,3 @@ public class Eksamen {
 	//lambdaøving: complete
 	
 	
-
-	
-
-	
-	
-	
-	
-	
-	
-
-	
-	
-}
